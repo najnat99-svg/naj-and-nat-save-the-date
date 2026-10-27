@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Najendra & Natalia | Save the Date</title>
 
-  <!-- Elegant fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,6 +31,7 @@
     body {
       margin: 0;
       min-height: 100vh;
+      min-height: 100dvh;
       font-family: "Cormorant Garamond", serif;
       color: var(--dark);
       display: flex;
@@ -40,35 +39,31 @@
       justify-content: center;
       padding: 35px 16px;
       overflow-x: hidden;
-
-      background:
-        radial-gradient(
-          ellipse at 50% 40%,
-          rgba(255, 255, 251, 0.98) 0%,
-          rgba(250, 246, 238, 0.96) 38%,
-          rgba(235, 226, 208, 0.95) 100%
-        );
+      background: radial-gradient(
+        ellipse at 50% 40%,
+        rgba(255,255,251,.98) 0%,
+        rgba(250,246,238,.96) 38%,
+        rgba(235,226,208,.95) 100%
+      );
     }
 
-    /* Delicate gold frame */
     body::before {
       content: "";
       position: fixed;
       inset: 14px;
-      border: 1px solid rgba(165, 139, 80, 0.48);
-      outline: 1px solid rgba(165, 139, 80, 0.16);
+      border: 1px solid rgba(165,139,80,.48);
+      outline: 1px solid rgba(165,139,80,.16);
       outline-offset: 5px;
       pointer-events: none;
       z-index: 20;
     }
 
-    /* Botanical background decorations */
     .background-decoration {
       position: fixed;
       width: 220px;
       height: 300px;
       pointer-events: none;
-      opacity: 0.48;
+      opacity: .48;
       z-index: 0;
     }
 
@@ -86,7 +81,6 @@
     .background-decoration svg {
       width: 100%;
       height: 100%;
-      overflow: visible;
     }
 
     .scene {
@@ -111,15 +105,14 @@
       border-radius: 50%;
       background: radial-gradient(
         circle,
-        rgba(255, 255, 250, 0.8) 0%,
-        rgba(227, 222, 205, 0.35) 65%,
-        rgba(227, 222, 205, 0) 100%
+        rgba(255,255,250,.8) 0%,
+        rgba(227,222,205,.35) 65%,
+        transparent 100%
       );
       z-index: -1;
       pointer-events: none;
     }
 
-    /* Invitation card */
     .invitation {
       position: absolute;
       z-index: 1;
@@ -130,16 +123,16 @@
       padding: 32px 28px 26px;
       background: var(--ivory);
       border: 1px solid #d5c69f;
-      outline: 1px solid rgba(165, 139, 80, 0.42);
+      outline: 1px solid rgba(165,139,80,.42);
       outline-offset: -8px;
-      box-shadow: 0 15px 45px rgba(69, 61, 42, 0.15);
+      box-shadow: 0 15px 45px rgba(69,61,42,.15);
       text-align: center;
       opacity: 0;
       visibility: hidden;
-      transform: translate(-50%, 20px) scale(0.96);
+      transform: translate(-50%, 20px) scale(.96);
       transition:
         transform 1s ease,
-        opacity 0.7s ease,
+        opacity .7s ease,
         visibility 0s linear 1s;
     }
 
@@ -152,7 +145,6 @@
       margin: 0 0 6px;
     }
 
-    /* Lotus floral ornament */
     .lotus-ornament {
       color: var(--gold);
       display: flex;
@@ -184,7 +176,6 @@
       margin: 0;
     }
 
-    /* Couple photo */
     .invitation-photo {
       display: block;
       width: 100%;
@@ -237,15 +228,15 @@
       height: 255px;
       transform: translate(-50%, -50%);
       perspective: 1000px;
-      transition: opacity 0.7s ease;
+      transition: opacity .7s ease;
     }
 
     .envelope {
       position: absolute;
       inset: 0;
       background: var(--sage);
-      border: 1px solid rgba(104, 116, 95, 0.6);
-      box-shadow: 0 20px 38px rgba(65, 67, 51, 0.22);
+      border: 1px solid rgba(104,116,95,.6);
+      box-shadow: 0 20px 38px rgba(65,67,51,.22);
       overflow: hidden;
     }
 
@@ -269,7 +260,6 @@
       z-index: 3;
     }
 
-    /* Opening flap */
     .flap {
       position: absolute;
       z-index: 4;
@@ -284,7 +274,6 @@
       backface-visibility: hidden;
     }
 
-    /* Gold Om seal */
     .seal {
       position: absolute;
       z-index: 5;
@@ -302,15 +291,15 @@
       );
       border: 2px solid #e9d9a6;
       box-shadow:
-        0 3px 8px rgba(69, 57, 31, 0.22),
-        inset 0 0 0 3px rgba(255, 250, 222, 0.35);
+        0 3px 8px rgba(69,57,31,.22),
+        inset 0 0 0 3px rgba(255,250,222,.35);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff9e8;
       font-family: serif;
       font-size: 35px;
-      transition: opacity 0.4s ease;
+      transition: opacity .4s ease;
     }
 
     .open-instruction {
@@ -324,15 +313,14 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       animation: gentlePulse 2s ease-in-out infinite;
-      transition: opacity 0.3s ease;
+      transition: opacity .3s ease;
     }
 
     @keyframes gentlePulse {
-      0%, 100% { opacity: 0.65; }
+      0%, 100% { opacity: .65; }
       50% { opacity: 1; }
     }
 
-    /* Clickable envelope */
     .open-button {
       position: absolute;
       z-index: 10;
@@ -355,7 +343,7 @@
       cursor: default;
     }
 
-    /* Envelope-opening animation */
+    /* Envelope opening animation */
     .scene.open .flap {
       transform: rotateX(180deg);
       z-index: 0;
@@ -377,16 +365,16 @@
       visibility: visible;
       transform: translate(-50%, -70px) scale(1);
       transition:
-        transform 1s ease 0.35s,
-        opacity 0.7s ease 0.35s,
-        visibility 0s linear 0.35s;
+        transform 1s ease .35s,
+        opacity .7s ease .35s,
+        visibility 0s linear .35s;
     }
 
     .scene.open .open-instruction {
       opacity: 0;
     }
 
-    /* Music control button */
+    /* Music button */
     .music-button {
       position: fixed;
       right: 30px;
@@ -400,8 +388,8 @@
       font-family: "Cormorant Garamond", serif;
       font-size: 17px;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(60, 50, 30, 0.12);
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 14px rgba(60,50,30,.12);
+      transition: background .3s ease;
     }
 
     .music-button:hover {
@@ -413,7 +401,6 @@
       outline-offset: 4px;
     }
 
-    /* Mobile layout */
     @media (max-width: 480px) {
       body {
         padding: 25px 12px;
@@ -426,7 +413,7 @@
       .background-decoration {
         width: 140px;
         height: 210px;
-        opacity: 0.35;
+        opacity: .35;
       }
 
       .scene {
@@ -483,8 +470,8 @@
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -492,42 +479,30 @@
 
 <body>
 
-  <!-- Botanical corner: top left -->
+  <!-- Botanical decoration: top left -->
   <div class="background-decoration decoration-top-left" aria-hidden="true">
     <svg viewBox="0 0 220 300" fill="none">
-      <path d="M-10 280 C35 220, 30 140, 105 45"
-        stroke="#9ba58a" stroke-width="1.5"/>
-      <path d="M27 220 C-5 205, -5 170, 1 157 C28 165, 38 190, 27 220Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M43 185 C70 170, 79 140, 72 124 C48 139, 37 161, 43 185Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M65 142 C32 130, 30 99, 36 83 C60 96, 72 118, 65 142Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M82 105 C107 88, 112 61, 103 45 C82 60, 74 84, 82 105Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M12 253 C-10 244, -23 221, -20 204 C3 215, 15 234, 12 253Z"
-        fill="#c5b27f" fill-opacity=".5"/>
+      <path d="M-10 280 C35 220,30 140,105 45" stroke="#9ba58a" stroke-width="1.5"/>
+      <path d="M27 220 C-5 205,-5 170,1 157 C28 165,38 190,27 220Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M43 185 C70 170,79 140,72 124 C48 139,37 161,43 185Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M65 142 C32 130,30 99,36 83 C60 96,72 118,65 142Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M82 105 C107 88,112 61,103 45 C82 60,74 84,82 105Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M12 253 C-10 244,-23 221,-20 204 C3 215,15 234,12 253Z" fill="#c5b27f" fill-opacity=".5"/>
       <circle cx="102" cy="43" r="3" fill="#b69a59"/>
       <circle cx="119" cy="61" r="2" fill="#b69a59"/>
       <circle cx="89" cy="25" r="2" fill="#b69a59"/>
     </svg>
   </div>
 
-  <!-- Botanical corner: bottom right -->
+  <!-- Botanical decoration: bottom right -->
   <div class="background-decoration decoration-bottom-right" aria-hidden="true">
     <svg viewBox="0 0 220 300" fill="none">
-      <path d="M-10 280 C35 220, 30 140, 105 45"
-        stroke="#9ba58a" stroke-width="1.5"/>
-      <path d="M27 220 C-5 205, -5 170, 1 157 C28 165, 38 190, 27 220Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M43 185 C70 170, 79 140, 72 124 C48 139, 37 161, 43 185Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M65 142 C32 130, 30 99, 36 83 C60 96, 72 118, 65 142Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M82 105 C107 88, 112 61, 103 45 C82 60, 74 84, 82 105Z"
-        fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M12 253 C-10 244, -23 221, -20 204 C3 215, 15 234, 12 253Z"
-        fill="#c5b27f" fill-opacity=".5"/>
+      <path d="M-10 280 C35 220,30 140,105 45" stroke="#9ba58a" stroke-width="1.5"/>
+      <path d="M27 220 C-5 205,-5 170,1 157 C28 165,38 190,27 220Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M43 185 C70 170,79 140,72 124 C48 139,37 161,43 185Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M65 142 C32 130,30 99,36 83 C60 96,72 118,65 142Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M82 105 C107 88,112 61,103 45 C82 60,74 84,82 105Z" fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M12 253 C-10 244,-23 221,-20 204 C3 215,15 234,12 253Z" fill="#c5b27f" fill-opacity=".5"/>
       <circle cx="102" cy="43" r="3" fill="#b69a59"/>
       <circle cx="119" cy="61" r="2" fill="#b69a59"/>
       <circle cx="89" cy="25" r="2" fill="#b69a59"/>
@@ -538,15 +513,11 @@
 
     <!-- Invitation card -->
     <section class="invitation" aria-label="Save the Date invitation">
-
       <p class="card-kicker">Save the Date</p>
 
-      <!-- Gold lotus ornament -->
       <div class="lotus-ornament" aria-hidden="true">
         <svg viewBox="0 0 100 65">
-          <g fill="none" stroke="currentColor"
-             stroke-width="1.6" stroke-linecap="round"
-             stroke-linejoin="round">
+          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
             <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
             <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
@@ -564,21 +535,20 @@
         Natalia
       </h1>
 
+      <!-- IMPORTANT: filename matches our-photo.JPG -->
       <img
         class="invitation-photo"
-        src="our-photo.jpg"
+        src="our-photo.JPG"
         alt="Najendra and Natalia"
+        onerror="this.style.display='none'; console.error('Photo not found. Check that our-photo.JPG is uploaded beside index.html.');"
       >
 
       <p class="invitation-text">joyfully invite you to celebrate</p>
       <p class="invitation-text">their special day</p>
 
-      <!-- Gold lotus ornament -->
       <div class="lotus-ornament" aria-hidden="true">
         <svg viewBox="0 0 100 65">
-          <g fill="none" stroke="currentColor"
-             stroke-width="1.6" stroke-linecap="round"
-             stroke-linejoin="round">
+          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
             <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
             <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
@@ -595,9 +565,7 @@
 
       <div class="bottom-ornament" aria-hidden="true">
         <svg viewBox="0 0 100 65">
-          <g fill="none" stroke="currentColor"
-             stroke-width="1.6" stroke-linecap="round"
-             stroke-linejoin="round">
+          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
             <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
             <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
             <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
@@ -608,7 +576,6 @@
           </g>
         </svg>
       </div>
-
     </section>
 
     <!-- Sage-green envelope -->
@@ -627,10 +594,9 @@
 
       <div class="open-instruction">Tap to open</div>
     </div>
-
   </main>
 
-  <!-- Wedding music: exact filename provided -->
+  <!-- Wedding music -->
   <audio id="weddingMusic" loop preload="auto">
     <source
       src="Apna Bana Le Piya _ Flute Cover _ Divyansh Shrivastava _ Arijit Singh _ Bhediya.mp3"
@@ -638,7 +604,6 @@
     >
   </audio>
 
-  <!-- Music control -->
   <button
     id="musicButton"
     class="music-button"
@@ -654,7 +619,6 @@
     const weddingMusic = document.getElementById("weddingMusic");
     const musicButton = document.getElementById("musicButton");
 
-    // Start music when the guest opens the envelope.
     openButton.addEventListener("click", async () => {
       if (!scene.classList.contains("open")) {
         scene.classList.add("open");
@@ -664,7 +628,6 @@
       await playWeddingMusic();
     });
 
-    // Music button lets the guest pause and resume.
     musicButton.addEventListener("click", async () => {
       if (!weddingMusic.paused) {
         weddingMusic.pause();
@@ -680,9 +643,8 @@
       } catch (error) {
         updateMusicButton(false);
         musicButton.textContent = "♫ Retry Music";
-
         console.error(
-          "Music could not play. Check the audio filename, file location, and browser console.",
+          "Music could not play. Check the MP3 filename and upload location.",
           error
         );
       }
@@ -709,9 +671,8 @@
 
     weddingMusic.addEventListener("error", () => {
       musicButton.textContent = "♫ Retry Music";
-
       console.error(
-        "The audio file could not be loaded. Verify the exact filename and that it is uploaded alongside index.html."
+        "The audio file could not load. Verify its exact filename and location."
       );
     });
   </script>
