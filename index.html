@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Najendra & Natalia | Save the Date</title>
+
+  <!-- Elegant fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sage: #a5ad96;
+      --deep-sage: #68745f;
+      --ivory: #faf6ee;
+      --cream: #eee5d5;
+      --gold: #a58b50;
+      --dark: #4c5145;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Cormorant Garamond", serif;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 35px 16px;
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 40%,
+          rgba(255, 255, 251, 0.98) 0%,
+          rgba(250, 246, 238, 0.96) 38%,
+          rgba(235, 226, 208, 0.95) 100%
+        );
+    }
+
+    /* Delicate gold frame */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 14px;
+      border: 1px solid rgba(165, 139, 80, 0.48);
+      outline: 1px solid rgba(165, 139, 80, 0.16);
+      outline-offset: 5px;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* Botanical background decorations */
+    .background-decoration {
+      position: fixed;
+      width: 220px;
+      height: 300px;
+      pointer-events: none;
+      opacity: 0.48;
+      z-index: 0;
+    }
+
+    .decoration-top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .decoration-bottom-right {
+      right: 0;
+      bottom: 0;
+      transform: rotate(180deg);
+    }
+
+    .background-decoration svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .scene {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      max-width: 560px;
+      min-height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .scene::before {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      max-width: 90vw;
+      max-height: 90vw;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 250, 0.8) 0%,
+        rgba(227, 222, 205, 0.35) 65%,
+        rgba(227, 222, 205, 0) 100%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Invitation card */
+    .invitation {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      width: min(450px, 92vw);
+      min-height: 600px;
+      padding: 32px 28px 26px;
+      background: var(--ivory);
+      border: 1px solid #d5c69f;
+      outline: 1px solid rgba(165, 139, 80, 0.42);
+      outline-offset: -8px;
+      box-shadow: 0 15px 45px rgba(69, 61, 42, 0.15);
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, 20px) scale(0.96);
+      transition:
+        transform 1s ease,
+        opacity 0.7s ease,
+        visibility 0s linear 1s;
+    }
+
+    .card-kicker {
+      font-family: "Great Vibes", cursive;
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--gold);
+      margin: 0 0 6px;
+    }
+
+    /* Lotus floral ornament */
+    .lotus-ornament {
+      color: var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 8px auto 12px;
+    }
+
+    .lotus-ornament svg {
+      width: 64px;
+      height: 42px;
+      display: block;
+    }
+
+    .couple-names {
+      margin: 0;
+      font-size: clamp(38px, 8vw, 48px);
+      line-height: 1.02;
+      font-weight: 500;
+      color: var(--deep-sage);
+    }
+
+    .ampersand {
+      display: block;
+      font-family: "Great Vibes", cursive;
+      color: var(--gold);
+      font-size: 36px;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    /* Couple photo */
+    .invitation-photo {
+      display: block;
+      width: 100%;
+      max-width: 370px;
+      height: 260px;
+      object-fit: contain;
+      object-position: center;
+      margin: 14px auto 12px;
+      background: transparent;
+    }
+
+    .invitation-text {
+      margin: 6px 0;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .event-date {
+      font-size: 24px;
+      color: var(--deep-sage);
+      font-weight: 600;
+      margin: 9px 0 4px;
+    }
+
+    .event-location {
+      font-size: 20px;
+      margin: 4px 0 10px;
+    }
+
+    .bottom-ornament {
+      color: var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .bottom-ornament svg {
+      width: 54px;
+      height: 38px;
+    }
+
+    /* Sage-green envelope */
+    .envelope-wrap {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      width: min(390px, 88vw);
+      height: 255px;
+      transform: translate(-50%, -50%);
+      perspective: 1000px;
+      transition: opacity 0.7s ease;
+    }
+
+    .envelope {
+      position: absolute;
+      inset: 0;
+      background: var(--sage);
+      border: 1px solid rgba(104, 116, 95, 0.6);
+      box-shadow: 0 20px 38px rgba(65, 67, 51, 0.22);
+      overflow: hidden;
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #b7bea9, #929d83);
+      clip-path: polygon(
+        0 0, 50% 58%, 100% 0, 100% 100%, 0 100%
+      );
+      z-index: 2;
+    }
+
+    .envelope::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(35deg, #a2ad93, #c1c6b4);
+      clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+      z-index: 3;
+    }
+
+    /* Opening flap */
+    .flap {
+      position: absolute;
+      z-index: 4;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 58%;
+      background: linear-gradient(180deg, #c0c6b4, #a6b09a);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform 1s ease;
+      backface-visibility: hidden;
+    }
+
+    /* Gold Om seal */
+    .seal {
+      position: absolute;
+      z-index: 5;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 30% 25%,
+        #f2e4b6,
+        #c4a65e 65%,
+        #a1813f
+      );
+      border: 2px solid #e9d9a6;
+      box-shadow:
+        0 3px 8px rgba(69, 57, 31, 0.22),
+        inset 0 0 0 3px rgba(255, 250, 222, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff9e8;
+      font-family: serif;
+      font-size: 35px;
+      transition: opacity 0.4s ease;
+    }
+
+    .open-instruction {
+      position: absolute;
+      top: calc(100% + 22px);
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: var(--deep-sage);
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: gentlePulse 2s ease-in-out infinite;
+      transition: opacity 0.3s ease;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 0.65; }
+      50% { opacity: 1; }
+    }
+
+    /* Clickable envelope */
+    .open-button {
+      position: absolute;
+      z-index: 10;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .open-button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 6px;
+    }
+
+    .open-button:disabled {
+      cursor: default;
+    }
+
+    /* Envelope-opening animation */
+    .scene.open .flap {
+      transform: rotateX(180deg);
+      z-index: 0;
+    }
+
+    .scene.open .seal {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scene.open .envelope-wrap {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scene.open .invitation {
+      z-index: 10;
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -70px) scale(1);
+      transition:
+        transform 1s ease 0.35s,
+        opacity 0.7s ease 0.35s,
+        visibility 0s linear 0.35s;
+    }
+
+    .scene.open .open-instruction {
+      opacity: 0;
+    }
+
+    /* Music control button */
+    .music-button {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      z-index: 30;
+      padding: 11px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+      background: var(--ivory);
+      color: var(--deep-sage);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(60, 50, 30, 0.12);
+      transition: background 0.3s ease;
+    }
+
+    .music-button:hover {
+      background: var(--cream);
+    }
+
+    .music-button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    /* Mobile layout */
+    @media (max-width: 480px) {
+      body {
+        padding: 25px 12px;
+      }
+
+      body::before {
+        inset: 10px;
+      }
+
+      .background-decoration {
+        width: 140px;
+        height: 210px;
+        opacity: 0.35;
+      }
+
+      .scene {
+        min-height: 680px;
+      }
+
+      .invitation {
+        width: 94vw;
+        min-height: auto;
+        padding: 26px 20px 22px;
+      }
+
+      .card-kicker {
+        font-size: 38px;
+      }
+
+      .couple-names {
+        font-size: 39px;
+      }
+
+      .invitation-photo {
+        height: 230px;
+        max-width: 100%;
+        margin: 12px auto;
+      }
+
+      .invitation-text {
+        font-size: 18px;
+      }
+
+      .event-date {
+        font-size: 21px;
+      }
+
+      .event-location {
+        font-size: 18px;
+      }
+
+      .envelope-wrap {
+        height: 225px;
+      }
+
+      .scene.open .invitation {
+        transform: translate(-50%, -65px) scale(1);
+      }
+
+      .music-button {
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Botanical corner: top left -->
+  <div class="background-decoration decoration-top-left" aria-hidden="true">
+    <svg viewBox="0 0 220 300" fill="none">
+      <path d="M-10 280 C35 220, 30 140, 105 45"
+        stroke="#9ba58a" stroke-width="1.5"/>
+      <path d="M27 220 C-5 205, -5 170, 1 157 C28 165, 38 190, 27 220Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M43 185 C70 170, 79 140, 72 124 C48 139, 37 161, 43 185Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M65 142 C32 130, 30 99, 36 83 C60 96, 72 118, 65 142Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M82 105 C107 88, 112 61, 103 45 C82 60, 74 84, 82 105Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M12 253 C-10 244, -23 221, -20 204 C3 215, 15 234, 12 253Z"
+        fill="#c5b27f" fill-opacity=".5"/>
+      <circle cx="102" cy="43" r="3" fill="#b69a59"/>
+      <circle cx="119" cy="61" r="2" fill="#b69a59"/>
+      <circle cx="89" cy="25" r="2" fill="#b69a59"/>
+    </svg>
+  </div>
+
+  <!-- Botanical corner: bottom right -->
+  <div class="background-decoration decoration-bottom-right" aria-hidden="true">
+    <svg viewBox="0 0 220 300" fill="none">
+      <path d="M-10 280 C35 220, 30 140, 105 45"
+        stroke="#9ba58a" stroke-width="1.5"/>
+      <path d="M27 220 C-5 205, -5 170, 1 157 C28 165, 38 190, 27 220Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M43 185 C70 170, 79 140, 72 124 C48 139, 37 161, 43 185Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M65 142 C32 130, 30 99, 36 83 C60 96, 72 118, 65 142Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M82 105 C107 88, 112 61, 103 45 C82 60, 74 84, 82 105Z"
+        fill="#a8b19a" fill-opacity=".55"/>
+      <path d="M12 253 C-10 244, -23 221, -20 204 C3 215, 15 234, 12 253Z"
+        fill="#c5b27f" fill-opacity=".5"/>
+      <circle cx="102" cy="43" r="3" fill="#b69a59"/>
+      <circle cx="119" cy="61" r="2" fill="#b69a59"/>
+      <circle cx="89" cy="25" r="2" fill="#b69a59"/>
+    </svg>
+  </div>
+
+  <main class="scene" id="scene">
+
+    <!-- Invitation card -->
+    <section class="invitation" aria-label="Save the Date invitation">
+
+      <p class="card-kicker">Save the Date</p>
+
+      <!-- Gold lotus ornament -->
+      <div class="lotus-ornament" aria-hidden="true">
+        <svg viewBox="0 0 100 65">
+          <g fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round"
+             stroke-linejoin="round">
+            <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
+            <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
+            <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
+            <path d="M50 53 Q69 32 61 10 Q50 23 50 53Z"/>
+            <path d="M17 48 Q33 45 42 55 Q27 58 17 48Z"/>
+            <path d="M83 48 Q67 45 58 55 Q73 58 83 48Z"/>
+            <path d="M29 59 Q50 63 71 59"/>
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="couple-names">
+        Najendra
+        <span class="ampersand">&</span>
+        Natalia
+      </h1>
+
+      <img
+        class="invitation-photo"
+        src="our-photo.jpg"
+        alt="Najendra and Natalia"
+      >
+
+      <p class="invitation-text">joyfully invite you to celebrate</p>
+      <p class="invitation-text">their special day</p>
+
+      <!-- Gold lotus ornament -->
+      <div class="lotus-ornament" aria-hidden="true">
+        <svg viewBox="0 0 100 65">
+          <g fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round"
+             stroke-linejoin="round">
+            <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
+            <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
+            <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
+            <path d="M50 53 Q69 32 61 10 Q50 23 50 53Z"/>
+            <path d="M17 48 Q33 45 42 55 Q27 58 17 48Z"/>
+            <path d="M83 48 Q67 45 58 55 Q73 58 83 48Z"/>
+            <path d="M29 59 Q50 63 71 59"/>
+          </g>
+        </svg>
+      </div>
+
+      <p class="event-date">Sunday, November 21, 2027</p>
+      <p class="event-location">Berbice, Guyana</p>
+
+      <div class="bottom-ornament" aria-hidden="true">
+        <svg viewBox="0 0 100 65">
+          <g fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round"
+             stroke-linejoin="round">
+            <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
+            <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
+            <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
+            <path d="M50 53 Q69 32 61 10 Q50 23 50 53Z"/>
+            <path d="M17 48 Q33 45 42 55 Q27 58 17 48Z"/>
+            <path d="M83 48 Q67 45 58 55 Q73 58 83 48Z"/>
+            <path d="M29 59 Q50 63 71 59"/>
+          </g>
+        </svg>
+      </div>
+
+    </section>
+
+    <!-- Sage-green envelope -->
+    <div class="envelope-wrap" id="envelopeWrap">
+      <div class="envelope">
+        <div class="flap"></div>
+        <div class="seal">ॐ</div>
+      </div>
+
+      <button
+        class="open-button"
+        id="openButton"
+        type="button"
+        aria-label="Open your Save the Date invitation"
+      ></button>
+
+      <div class="open-instruction">Tap to open</div>
+    </div>
+
+  </main>
+
+  <!-- Wedding music: exact filename provided -->
+  <audio id="weddingMusic" loop preload="auto">
+    <source
+      src="Apna Bana Le Piya _ Flute Cover _ Divyansh Shrivastava _ Arijit Singh _ Bhediya.mp3"
+      type="audio/mpeg"
+    >
+  </audio>
+
+  <!-- Music control -->
+  <button
+    id="musicButton"
+    class="music-button"
+    type="button"
+    aria-label="Play music"
+  >
+    ♫ Play Music
+  </button>
+
+  <script>
+    const scene = document.getElementById("scene");
+    const openButton = document.getElementById("openButton");
+    const weddingMusic = document.getElementById("weddingMusic");
+    const musicButton = document.getElementById("musicButton");
+
+    // Start music when the guest opens the envelope.
+    openButton.addEventListener("click", async () => {
+      if (!scene.classList.contains("open")) {
+        scene.classList.add("open");
+        openButton.disabled = true;
+      }
+
+      await playWeddingMusic();
+    });
+
+    // Music button lets the guest pause and resume.
+    musicButton.addEventListener("click", async () => {
+      if (!weddingMusic.paused) {
+        weddingMusic.pause();
+      } else {
+        await playWeddingMusic();
+      }
+    });
+
+    async function playWeddingMusic() {
+      try {
+        await weddingMusic.play();
+        updateMusicButton(true);
+      } catch (error) {
+        updateMusicButton(false);
+        musicButton.textContent = "♫ Retry Music";
+
+        console.error(
+          "Music could not play. Check the audio filename, file location, and browser console.",
+          error
+        );
+      }
+    }
+
+    function updateMusicButton(playing) {
+      musicButton.textContent = playing
+        ? "♫ Music On"
+        : "♫ Play Music";
+
+      musicButton.setAttribute(
+        "aria-label",
+        playing ? "Pause music" : "Play music"
+      );
+    }
+
+    weddingMusic.addEventListener("play", () => {
+      updateMusicButton(true);
+    });
+
+    weddingMusic.addEventListener("pause", () => {
+      updateMusicButton(false);
+    });
+
+    weddingMusic.addEventListener("error", () => {
+      musicButton.textContent = "♫ Retry Music";
+
+      console.error(
+        "The audio file could not be loaded. Verify the exact filename and that it is uploaded alongside index.html."
+      );
+    });
+  </script>
+
+</body>
+</html>
