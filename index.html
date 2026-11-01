@@ -2,680 +2,1041 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Najendra & Natalia | Save the Date</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Najendra & Natalia | Save the Date</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --sage: #a5ad96;
-      --deep-sage: #68745f;
-      --ivory: #faf6ee;
-      --cream: #eee5d5;
-      --gold: #a58b50;
-      --dark: #4c5145;
-    }
+<style>
+:root {
+  --sage-dark: #293f30;
+  --sage-mid: #435c43;
+  --sage-light: #64795b;
+  --ivory: #faf7ef;
+  --gold: #c5a15c;
+  --text: #4d5948;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    html {
-      min-height: 100%;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      min-height: 100dvh;
-      font-family: "Cormorant Garamond", serif;
-      color: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 35px 16px;
-      overflow-x: hidden;
-      background: radial-gradient(
-        ellipse at 50% 40%,
-        rgba(255,255,251,.98) 0%,
-        rgba(250,246,238,.96) 38%,
-        rgba(235,226,208,.95) 100%
-      );
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--text);
+  background: var(--ivory);
+  overflow-x: hidden;
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 14px;
-      border: 1px solid rgba(165,139,80,.48);
-      outline: 1px solid rgba(165,139,80,.16);
-      outline-offset: 5px;
-      pointer-events: none;
-      z-index: 20;
-    }
+.screen {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 18px;
+  overflow: hidden;
+}
 
-    .background-decoration {
-      position: fixed;
-      width: 220px;
-      height: 300px;
-      pointer-events: none;
-      opacity: .48;
-      z-index: 0;
-    }
+.screen.active {
+  display: flex;
+  animation: fadeIn .7s ease;
+}
 
-    .decoration-top-left {
-      top: 0;
-      left: 0;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    .decoration-bottom-right {
-      right: 0;
-      bottom: 0;
-      transform: rotate(180deg);
-    }
+/* Botanical corner decorations */
 
-    .background-decoration svg {
-      width: 100%;
-      height: 100%;
-    }
+.garden-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
 
-    .scene {
-      position: relative;
-      isolation: isolate;
-      width: 100%;
-      max-width: 560px;
-      min-height: 700px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1;
-    }
+.garden-branch {
+  position: absolute;
+  width: 190px;
+  height: 260px;
+  opacity: .12;
+}
 
-    .scene::before {
-      content: "";
-      position: absolute;
-      width: 430px;
-      height: 430px;
-      max-width: 90vw;
-      max-height: 90vw;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(255,255,250,.8) 0%,
-        rgba(227,222,205,.35) 65%,
-        transparent 100%
-      );
-      z-index: -1;
-      pointer-events: none;
-    }
+.garden-branch.top-left {
+  top: 0;
+  left: 0;
+}
 
-    .invitation {
-      position: absolute;
-      z-index: 1;
-      top: 50%;
-      left: 50%;
-      width: min(450px, 92vw);
-      min-height: 600px;
-      padding: 32px 28px 26px;
-      background: var(--ivory);
-      border: 1px solid #d5c69f;
-      outline: 1px solid rgba(165,139,80,.42);
-      outline-offset: -8px;
-      box-shadow: 0 15px 45px rgba(69,61,42,.15);
-      text-align: center;
-      opacity: 0;
-      visibility: hidden;
-      transform: translate(-50%, 20px) scale(.96);
-      transition:
-        transform 1s ease,
-        opacity .7s ease,
-        visibility 0s linear 1s;
-    }
+.garden-branch.bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
 
-    .card-kicker {
-      font-family: "Great Vibes", cursive;
-      font-size: 42px;
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--gold);
-      margin: 0 0 6px;
-    }
+/* INCOMING FACETIME SCREEN */
 
-    .lotus-ornament {
-      color: var(--gold);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 8px auto 12px;
-    }
+#callScreen {
+  background:
+    radial-gradient(
+      ellipse at 50% 42%,
+      rgba(139, 157, 112, .58) 0%,
+      rgba(91, 116, 78, .24) 36%,
+      transparent 70%
+    ),
+    linear-gradient(
+      115deg,
+      #293e30 0%,
+      #3d5540 34%,
+      #536b4d 65%,
+      #344b37 100%
+    );
+  color: #fffdf5;
+}
 
-    .lotus-ornament svg {
-      width: 64px;
-      height: 42px;
-      display: block;
-    }
+.call-card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 600px);
+  min-height: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 85px 20px 35px;
+}
 
-    .couple-names {
-      margin: 0;
-      font-size: clamp(38px, 8vw, 48px);
-      line-height: 1.02;
-      font-weight: 500;
-      color: var(--deep-sage);
-    }
+.call-status {
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 250, 235, .85);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
 
-    .ampersand {
-      display: block;
-      font-family: "Great Vibes", cursive;
-      color: var(--gold);
-      font-size: 36px;
-      line-height: 1.15;
-      margin: 0;
-    }
+.caller-name {
+  color: #fffdf6;
+  font-size: clamp(34px, 6vw, 55px);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+}
 
-    .invitation-photo {
-      display: block;
-      width: 100%;
-      max-width: 370px;
-      height: 260px;
-      object-fit: contain;
-      object-position: center;
-      margin: 14px auto 12px;
-      background: transparent;
-    }
+.call-type {
+  color: rgba(255, 250, 235, .88);
+  font-size: 21px;
+  letter-spacing: .5px;
+  margin-top: 14px;
+}
 
-    .invitation-text {
-      margin: 6px 0;
-      font-size: 20px;
-      line-height: 1.25;
-    }
+.profile-emblem {
+  width: 214px;
+  height: 214px;
+  margin: 48px auto 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(211, 177, 104, .95);
+  background:
+    radial-gradient(
+      circle,
+      rgba(161, 175, 126, .35),
+      rgba(51, 76, 54, .2)
+    );
+  box-shadow:
+    0 0 0 10px rgba(255,255,255,.025),
+    0 0 35px rgba(220, 191, 119, .10),
+    inset 0 0 25px rgba(255,255,255,.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5c47d;
+  font-family: serif;
+  font-size: 104px;
+  line-height: 1;
+  text-shadow: 0 3px 8px rgba(0,0,0,.18);
+}
 
-    .event-date {
-      font-size: 24px;
-      color: var(--deep-sage);
-      font-weight: 600;
-      margin: 9px 0 4px;
-    }
+.call-subtitle {
+  color: rgba(255, 250, 235, .9);
+  font-size: 18px;
+  letter-spacing: .5px;
+  margin-top: 54px;
+}
 
-    .event-location {
-      font-size: 20px;
-      margin: 4px 0 10px;
-    }
+.call-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 92px;
+  margin-top: 62px;
+}
 
-    .bottom-ornament {
-      color: var(--gold);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 8px;
-    }
+.call-action {
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+}
 
-    .bottom-ornament svg {
-      width: 54px;
-      height: 38px;
-    }
+.phone-button {
+  width: 79px;
+  height: 79px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 7px 20px rgba(0,0,0,.18);
+  transition: transform .2s ease;
+}
 
-    /* Sage-green envelope */
-    .envelope-wrap {
-      position: absolute;
-      z-index: 3;
-      top: 50%;
-      left: 50%;
-      width: min(390px, 88vw);
-      height: 255px;
-      transform: translate(-50%, -50%);
-      perspective: 1000px;
-      transition: opacity .7s ease;
-    }
+.call-action:hover .phone-button {
+  transform: scale(1.07);
+}
 
-    .envelope {
-      position: absolute;
-      inset: 0;
-      background: var(--sage);
-      border: 1px solid rgba(104,116,95,.6);
-      box-shadow: 0 20px 38px rgba(65,67,51,.22);
-      overflow: hidden;
-    }
+.phone-button svg {
+  width: 31px;
+  height: 31px;
+  fill: white;
+}
 
-    .envelope::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, #b7bea9, #929d83);
-      clip-path: polygon(
-        0 0, 50% 58%, 100% 0, 100% 100%, 0 100%
-      );
-      z-index: 2;
-    }
+.answer-button {
+  background: #31b95d;
+}
 
-    .envelope::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(35deg, #a2ad93, #c1c6b4);
-      clip-path: polygon(0 100%, 50% 48%, 100% 100%);
-      z-index: 3;
-    }
+.decline-button {
+  background: #e74649;
+}
 
-    .flap {
-      position: absolute;
-      z-index: 4;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 58%;
-      background: linear-gradient(180deg, #c0c6b4, #a6b09a);
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top center;
-      transition: transform 1s ease;
-      backface-visibility: hidden;
-    }
+/* FUNNY DECLINE SCREEN */
 
-    .seal {
-      position: absolute;
-      z-index: 5;
-      top: 48%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at 30% 25%,
-        #f2e4b6,
-        #c4a65e 65%,
-        #a1813f
-      );
-      border: 2px solid #e9d9a6;
-      box-shadow:
-        0 3px 8px rgba(69,57,31,.22),
-        inset 0 0 0 3px rgba(255,250,222,.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff9e8;
-      font-family: serif;
-      font-size: 35px;
-      transition: opacity .4s ease;
-    }
+#declinedScreen {
+  background:
+    radial-gradient(
+      ellipse at top,
+      rgba(139,157,112,.5),
+      transparent 65%
+    ),
+    linear-gradient(145deg, #293e30, #536b4d);
+  text-align: center;
+}
 
-    .open-instruction {
-      position: absolute;
-      top: calc(100% + 22px);
-      left: 0;
-      width: 100%;
-      text-align: center;
-      color: var(--deep-sage);
-      font-size: 18px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      animation: gentlePulse 2s ease-in-out infinite;
-      transition: opacity .3s ease;
-    }
+.declined-card {
+  width: min(100%, 460px);
+  padding: 45px 28px;
+  position: relative;
+  z-index: 2;
+  background: var(--ivory);
+  border: 1px solid var(--gold);
+  outline: 1px solid rgba(197,161,92,.35);
+  outline-offset: 6px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.2);
+}
 
-    @keyframes gentlePulse {
-      0%, 100% { opacity: .65; }
-      50% { opacity: 1; }
-    }
+.declined-om {
+  color: var(--gold);
+  font-family: serif;
+  font-size: 65px;
+  margin-bottom: 15px;
+}
 
-    .open-button {
-      position: absolute;
-      z-index: 10;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      padding: 0;
-      background: transparent;
-      cursor: pointer;
-      border-radius: 4px;
-    }
+.declined-card h2 {
+  font-family: "Great Vibes", cursive;
+  font-size: 55px;
+  font-weight: 400;
+  color: var(--gold);
+  margin: 0 0 20px;
+}
 
-    .open-button:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 6px;
-    }
+.declined-card p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--sage-mid);
+  margin: 0 0 28px;
+}
 
-    .open-button:disabled {
-      cursor: default;
-    }
+/* WEDDING INVITATION */
 
-    /* Envelope opening animation */
-    .scene.open .flap {
-      transform: rotateX(180deg);
-      z-index: 0;
-    }
+#invitationScreen {
+  background:
+    radial-gradient(ellipse at top left, rgba(220,227,213,.75), transparent 48%),
+    radial-gradient(ellipse at bottom right, rgba(230,218,195,.7), transparent 48%),
+    var(--ivory);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 45px 18px 35px;
+  overflow: visible;
+}
 
-    .scene.open .seal {
-      opacity: 0;
-      pointer-events: none;
-    }
+#invitationScreen.active {
+  display: flex;
+}
 
-    .scene.open .envelope-wrap {
-      opacity: 0;
-      pointer-events: none;
-    }
+.invitation {
+  width: min(100%, 650px);
+  position: relative;
+  z-index: 2;
+  padding: 38px 28px 42px;
+  text-align: center;
+  background: rgba(255,253,247,.93);
+  border: 1px solid var(--gold);
+  outline: 1px solid rgba(185,154,92,.3);
+  outline-offset: 7px;
+  box-shadow: 0 18px 50px rgba(79,83,65,.12);
+  animation: reveal 1.2s ease both;
+}
 
-    .scene.open .invitation {
-      z-index: 10;
-      opacity: 1;
-      visibility: visible;
-      transform: translate(-50%, -70px) scale(1);
-      transition:
-        transform 1s ease .35s,
-        opacity .7s ease .35s,
-        visibility 0s linear .35s;
-    }
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .scene.open .open-instruction {
-      opacity: 0;
-    }
+.invitation-kicker {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--sage-mid);
+  margin: 0 0 10px;
+}
 
-    /* Music button */
-    .music-button {
-      position: fixed;
-      right: 30px;
-      bottom: 30px;
-      z-index: 30;
-      padding: 11px 20px;
-      border: 1px solid var(--gold);
-      border-radius: 30px;
-      background: var(--ivory);
-      color: var(--deep-sage);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 17px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(60,50,30,.12);
-      transition: background .3s ease;
-    }
+.save-date {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 10vw, 72px);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
 
-    .music-button:hover {
-      background: var(--cream);
-    }
+.couple-names {
+  font-size: clamp(37px, 8vw, 53px);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--sage-mid);
+  margin: 10px 0;
+}
 
-    .music-button:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 4px;
-    }
+.invitation-poem {
+  max-width: 490px;
+  margin: 25px auto;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #626a59;
+}
 
-    @media (max-width: 480px) {
-      body {
-        padding: 25px 12px;
-      }
+/* Lotus and bold date/location */
 
-      body::before {
-        inset: 10px;
-      }
+.save-date-details {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--sage-mid);
+  margin: 12px 0 0;
+  line-height: 1.35;
+}
 
-      .background-decoration {
-        width: 140px;
-        height: 210px;
-        opacity: .35;
-      }
+.save-date-details strong {
+  font-weight: 700;
+  color: var(--sage-dark);
+}
 
-      .scene {
-        min-height: 680px;
-      }
+.lotus-date-symbol {
+  display: block;
+  width: 65px;
+  height: 49px;
+  margin: 12px auto 6px;
+}
 
-      .invitation {
-        width: 94vw;
-        min-height: auto;
-        padding: 26px 20px 22px;
-      }
+/* PHOTO — no frame, no box, no shadow */
 
-      .card-kicker {
-        font-size: 38px;
-      }
+.couple-photo {
+  display: block;
+  width: min(100%, 470px);
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  margin: 25px auto;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
 
-      .couple-names {
-        font-size: 39px;
-      }
+/* Gold lotus divider */
 
-      .invitation-photo {
-        height: 230px;
-        max-width: 100%;
-        margin: 12px auto;
-      }
+.lotus-gold {
+  width: 58px;
+  height: 46px;
+  display: inline-block;
+  color: #b99550;
+  vertical-align: middle;
+}
 
-      .invitation-text {
-        font-size: 18px;
-      }
+.lotus-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: #b99550;
+  margin: 16px auto;
+}
 
-      .event-date {
-        font-size: 21px;
-      }
+.lotus-divider span {
+  font-size: 19px;
+}
 
-      .event-location {
-        font-size: 18px;
-      }
+.signature {
+  font-family: "Great Vibes", cursive;
+  font-size: 39px;
+  color: var(--gold);
+  margin: 15px 0 0;
+}
 
-      .envelope-wrap {
-        height: 225px;
-      }
+/* INVITATION CONTROLS */
 
-      .scene.open .invitation {
-        transform: translate(-50%, -65px) scale(1);
-      }
+.side-controls {
+  position: static;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 35px auto 20px;
+  transform: none;
+  width: 100%;
+}
 
-      .music-button {
-        right: 20px;
-        bottom: 20px;
-      }
-    }
+.control-button {
+  border: 1px solid rgba(185,154,92,.65);
+  background: rgba(255,253,247,.95);
+  color: var(--sage-mid);
+  border-radius: 50px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-size: 15px;
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+.end-call-action {
+  border: none;
+  background: transparent;
+  color: #53634d;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  padding: 0;
+}
+
+.end-call-circle {
+  width: 79px;
+  height: 79px;
+  border-radius: 50%;
+  background: #e74649;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 7px 20px rgba(0,0,0,.18);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.end-call-circle svg {
+  width: 31px;
+  height: 31px;
+  fill: white;
+}
+
+.end-call-action:hover .end-call-circle {
+  transform: scale(1.08);
+  background: #d9363c;
+}
+
+.end-call-action:focus-visible,
+.call-action:focus-visible,
+.control-button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 5px;
+}
+
+/* END CALL SCREEN */
+
+#endScreen {
+  background:
+    radial-gradient(ellipse at top left, #e8eddf, transparent 50%),
+    linear-gradient(145deg, #f7f4eb, #e7e9dc);
+  text-align: center;
+}
+
+.end-card {
+  max-width: 430px;
+  padding: 35px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.end-title {
+  font-family: "Great Vibes", cursive;
+  font-size: 55px;
+  color: var(--gold);
+  margin: 15px 0;
+}
+
+.end-message {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.again-button {
+  margin-top: 25px;
+  padding: 12px 27px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  background: var(--sage-mid);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .call-card {
+    min-height: 680px;
+    padding: 75px 15px 30px;
+  }
+
+  .call-status {
+    font-size: 12px;
+    letter-spacing: 2.5px;
+  }
+
+  .caller-name {
+    font-size: 35px;
+  }
+
+  .call-type {
+    font-size: 18px;
+  }
+
+  .profile-emblem {
+    width: 175px;
+    height: 175px;
+    font-size: 85px;
+    margin-top: 45px;
+  }
+
+  .call-subtitle {
+    margin-top: 45px;
+  }
+
+  .call-actions {
+    gap: 65px;
+    margin-top: 55px;
+  }
+
+  .phone-button {
+    width: 70px;
+    height: 70px;
+  }
+
+  .invitation {
+    padding: 30px 17px;
+  }
+
+  .invitation-poem {
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .save-date-details {
+    font-size: 22px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+
+  .lotus-date-symbol {
+    width: 58px;
+    height: 44px;
+    margin: 10px auto 6px;
+  }
+
+  /* Photo remains natural and blends into the invitation */
+
+  .couple-photo {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .side-controls {
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .control-button {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .end-call-circle {
+    width: 65px;
+    height: 65px;
+  }
+
+  .end-call-circle svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .end-call-action {
+    font-size: 14px;
+  }
+
+  .garden-branch {
+    width: 120px;
+    height: 170px;
+  }
+
+  .declined-card {
+    padding: 38px 22px;
+  }
+
+  .declined-om {
+    font-size: 58px;
+  }
+
+  .declined-card h2 {
+    font-size: 48px;
+  }
+
+  .declined-card p {
+    font-size: 24px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Botanical decoration: top left -->
-  <div class="background-decoration decoration-top-left" aria-hidden="true">
-    <svg viewBox="0 0 220 300" fill="none">
-      <path d="M-10 280 C35 220,30 140,105 45" stroke="#9ba58a" stroke-width="1.5"/>
-      <path d="M27 220 C-5 205,-5 170,1 157 C28 165,38 190,27 220Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M43 185 C70 170,79 140,72 124 C48 139,37 161,43 185Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M65 142 C32 130,30 99,36 83 C60 96,72 118,65 142Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M82 105 C107 88,112 61,103 45 C82 60,74 84,82 105Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M12 253 C-10 244,-23 221,-20 204 C3 215,15 234,12 253Z" fill="#c5b27f" fill-opacity=".5"/>
-      <circle cx="102" cy="43" r="3" fill="#b69a59"/>
-      <circle cx="119" cy="61" r="2" fill="#b69a59"/>
-      <circle cx="89" cy="25" r="2" fill="#b69a59"/>
+<!-- BACKGROUND MUSIC -->
+
+<audio id="weddingMusic" loop preload="auto">
+  <source src="./Apna%20Bana%20Le%20Piya%20_%20Flute%20Cover%20_%20Divyansh%20Shrivastava%20_%20Arijit%20Singh%20_%20Bhediya.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BOTANICAL BRANCH SVG -->
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="garden-branch" viewBox="0 0 180 240">
+    <g fill="none" stroke="#87977d" stroke-width="2" stroke-linecap="round">
+      <path d="M12 225 Q65 140 145 15"/>
+      <path d="M40 184 Q8 170 10 135 Q43 143 40 184Z" fill="#cbd6c1"/>
+      <path d="M62 151 Q95 154 112 121 Q78 113 62 151Z" fill="#cbd6c1"/>
+      <path d="M85 112 Q48 100 52 65 Q86 77 85 112Z" fill="#cbd6c1"/>
+      <path d="M108 78 Q143 89 160 57 Q128 44 108 78Z" fill="#cbd6c1"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- INCOMING FACETIME AUDIO SCREEN -->
+
+<section id="callScreen" class="screen active">
+
+  <div class="garden-background">
+    <svg class="garden-branch top-left" viewBox="0 0 180 240">
+      <use href="#garden-branch"/>
+    </svg>
+    <svg class="garden-branch bottom-right" viewBox="0 0 180 240">
+      <use href="#garden-branch"/>
     </svg>
   </div>
 
-  <!-- Botanical decoration: bottom right -->
-  <div class="background-decoration decoration-bottom-right" aria-hidden="true">
-    <svg viewBox="0 0 220 300" fill="none">
-      <path d="M-10 280 C35 220,30 140,105 45" stroke="#9ba58a" stroke-width="1.5"/>
-      <path d="M27 220 C-5 205,-5 170,1 157 C28 165,38 190,27 220Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M43 185 C70 170,79 140,72 124 C48 139,37 161,43 185Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M65 142 C32 130,30 99,36 83 C60 96,72 118,65 142Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M82 105 C107 88,112 61,103 45 C82 60,74 84,82 105Z" fill="#a8b19a" fill-opacity=".55"/>
-      <path d="M12 253 C-10 244,-23 221,-20 204 C3 215,15 234,12 253Z" fill="#c5b27f" fill-opacity=".5"/>
-      <circle cx="102" cy="43" r="3" fill="#b69a59"/>
-      <circle cx="119" cy="61" r="2" fill="#b69a59"/>
-      <circle cx="89" cy="25" r="2" fill="#b69a59"/>
-    </svg>
-  </div>
+  <div class="call-card">
 
-  <main class="scene" id="scene">
+    <div class="call-status">Incoming FaceTime Audio</div>
 
-    <!-- Invitation card -->
-    <section class="invitation" aria-label="Save the Date invitation">
-      <p class="card-kicker">Save the Date</p>
+    <h1 class="caller-name">Najendra &amp; Natalia</h1>
 
-      <div class="lotus-ornament" aria-hidden="true">
-        <svg viewBox="0 0 100 65">
-          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
-            <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
-            <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
-            <path d="M50 53 Q69 32 61 10 Q50 23 50 53Z"/>
-            <path d="M17 48 Q33 45 42 55 Q27 58 17 48Z"/>
-            <path d="M83 48 Q67 45 58 55 Q73 58 83 48Z"/>
-            <path d="M29 59 Q50 63 71 59"/>
-          </g>
-        </svg>
-      </div>
+    <div class="call-type">FaceTime Audio</div>
 
-      <h1 class="couple-names">
-        Najendra
-        <span class="ampersand">&</span>
-        Natalia
-      </h1>
+    <div class="profile-emblem">ॐ</div>
 
-      <!-- IMPORTANT: filename matches our-photo.JPG -->
-      <img
-        class="invitation-photo"
-        src="our-photo.JPG"
-        alt="Najendra and Natalia"
-        onerror="this.style.display='none'; console.error('Photo not found. Check that our-photo.JPG is uploaded beside index.html.');"
-      >
+    <p class="call-subtitle">A special announcement awaits...</p>
 
-      <p class="invitation-text">joyfully invite you to celebrate</p>
-      <p class="invitation-text">their special day</p>
+    <div class="call-actions">
 
-      <div class="lotus-ornament" aria-hidden="true">
-        <svg viewBox="0 0 100 65">
-          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
-            <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
-            <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
-            <path d="M50 53 Q69 32 61 10 Q50 23 50 53Z"/>
-            <path d="M17 48 Q33 45 42 55 Q27 58 17 48Z"/>
-            <path d="M83 48 Q67 45 58 55 Q73 58 83 48Z"/>
-            <path d="M29 59 Q50 63 71 59"/>
-          </g>
-        </svg>
-      </div>
+      <button class="call-action" id="declineButton" aria-label="Decline call">
+        <span class="phone-button decline-button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92Z" transform="rotate(135 12 12)"/>
+          </svg>
+        </span>
+        <span>Decline</span>
+      </button>
 
-      <p class="event-date">Sunday, November 21, 2027</p>
-      <p class="event-location">Berbice, Guyana</p>
+      <button class="call-action" id="answerButton" aria-label="Answer call">
+        <span class="phone-button answer-button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92Z"/>
+          </svg>
+        </span>
+        <span>Answer</span>
+      </button>
 
-      <div class="bottom-ornament" aria-hidden="true">
-        <svg viewBox="0 0 100 65">
-          <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M50 53 Q27 42 24 23 Q43 30 50 53Z"/>
-            <path d="M50 53 Q73 42 76 23 Q57 30 50 53Z"/>
-            <path d="M50 53 Q31 32 39 10 Q50 23 50 53Z"/>
-            <path d="M50 53 Q69 32 61 10 Q50 23 50 53Z"/>
-            <path d="M17 48 Q33 45 42 55 Q27 58 17 48Z"/>
-            <path d="M83 48 Q67 45 58 55 Q73 58 83 48Z"/>
-            <path d="M29 59 Q50 63 71 59"/>
-          </g>
-        </svg>
-      </div>
-    </section>
-
-    <!-- Sage-green envelope -->
-    <div class="envelope-wrap" id="envelopeWrap">
-      <div class="envelope">
-        <div class="flap"></div>
-        <div class="seal">ॐ</div>
-      </div>
-
-      <button
-        class="open-button"
-        id="openButton"
-        type="button"
-        aria-label="Open your Save the Date invitation"
-      ></button>
-
-      <div class="open-instruction">Tap to open</div>
     </div>
+  </div>
+</section>
+
+<!-- FUNNY DECLINE SCREEN -->
+
+<section id="declinedScreen" class="screen">
+
+  <div class="declined-card">
+
+    <div class="declined-om">ॐ</div>
+
+    <h2>Oh, really?</h2>
+
+    <p>Don't make us send the baraat to come get you!</p>
+
+    <button class="again-button" id="answerAgainButton">
+      Okay, okay… I'm coming!
+    </button>
+
+  </div>
+
+</section>
+
+<!-- WEDDING INVITATION SCREEN -->
+
+<section id="invitationScreen" class="screen">
+
+  <div class="garden-background">
+    <svg class="garden-branch top-left" viewBox="0 0 180 240">
+      <use href="#garden-branch"/>
+    </svg>
+    <svg class="garden-branch bottom-right" viewBox="0 0 180 240">
+      <use href="#garden-branch"/>
+    </svg>
+  </div>
+
+  <main class="invitation">
+
+    <p class="invitation-kicker">A celebration of love</p>
+
+    <h1 class="save-date">Save the Date</h1>
+
+    <div class="lotus-divider">
+      <span>✧</span>
+      <svg class="lotus-gold" viewBox="0 0 100 75"
+           xmlns="http://www.w3.org/2000/svg"
+           aria-label="Elegant upright gold lotus">
+        <g fill="none" stroke="currentColor"
+           stroke-width="1.7"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+          <path d="M50 59 C39 43 43 20 50 8 C57 20 61 43 50 59Z"/>
+          <path d="M48 59 C32 49 23 32 26 19 C39 27 47 43 50 59Z"/>
+          <path d="M52 59 C68 49 77 32 74 19 C61 27 53 43 50 59Z"/>
+          <path d="M45 60 C27 62 12 49 8 35 C25 37 40 47 50 60Z"/>
+          <path d="M55 60 C73 62 88 49 92 35 C75 37 60 47 50 60Z"/>
+          <path d="M23 65 Q50 72 77 65"/>
+        </g>
+      </svg>
+      <span>✧</span>
+    </div>
+
+    <h2 class="couple-names">Najendra &amp; Natalia</h2>
+
+    <p class="invitation-poem">
+      Our journey begins on this special day,<br>
+      Please save the date, we hope you’ll stay.
+
+      <span class="save-date-details">
+
+        <svg class="lotus-date-symbol" viewBox="0 0 100 75"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-label="Gold lotus symbol">
+          <g fill="none" stroke="#b99550"
+             stroke-width="1.7"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+            <path d="M50 59 C39 43 43 20 50 8 C57 20 61 43 50 59Z"/>
+            <path d="M48 59 C32 49 23 32 26 19 C39 27 47 43 50 59Z"/>
+            <path d="M52 59 C68 49 77 32 74 19 C61 27 53 43 50 59Z"/>
+            <path d="M45 60 C27 62 12 49 8 35 C25 37 40 47 50 60Z"/>
+            <path d="M55 60 C73 62 88 49 92 35 C75 37 60 47 50 60Z"/>
+            <path d="M23 65 Q50 72 77 65"/>
+          </g>
+        </svg>
+
+        <strong>Sunday, November 21, 2027</strong><br>
+        <strong>Berbice, Guyana</strong>
+      </span>
+    </p>
+
+    <!-- Photograph blends directly into the invitation -->
+
+    <img
+      src="our-photo.JPG"
+      alt="Najendra and Natalia"
+      class="couple-photo"
+    >
+
+    <div class="lotus-divider">
+      <span>✧</span>
+      <svg class="lotus-gold" viewBox="0 0 100 75"
+           xmlns="http://www.w3.org/2000/svg"
+           aria-label="Elegant upright gold lotus">
+        <g fill="none" stroke="currentColor"
+           stroke-width="1.7"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+          <path d="M50 59 C39 43 43 20 50 8 C57 20 61 43 50 59Z"/>
+          <path d="M48 59 C32 49 23 32 26 19 C39 27 47 43 50 59Z"/>
+          <path d="M52 59 C68 49 77 32 74 19 C61 27 53 43 50 59Z"/>
+          <path d="M45 60 C27 62 12 49 8 35 C25 37 40 47 50 60Z"/>
+          <path d="M55 60 C73 62 88 49 92 35 C75 37 60 47 50 60Z"/>
+          <path d="M23 65 Q50 72 77 65"/>
+        </g>
+      </svg>
+      <span>✧</span>
+    </div>
+
+    <p class="signature">With love, Najendra &amp; Natalia</p>
+
   </main>
 
-  <!-- Wedding music -->
-  <audio id="weddingMusic" loop preload="auto">
-    <source
-      src="Apna Bana Le Piya _ Flute Cover _ Divyansh Shrivastava _ Arijit Singh _ Bhediya.mp3"
-      type="audio/mpeg"
-    >
-  </audio>
+  <!-- MUSIC, CALENDAR AND END CALL BUTTONS -->
 
-  <button
-    id="musicButton"
-    class="music-button"
-    type="button"
-    aria-label="Play music"
-  >
-    ♫ Play Music
-  </button>
+  <div class="side-controls">
 
-  <script>
-    const scene = document.getElementById("scene");
-    const openButton = document.getElementById("openButton");
-    const weddingMusic = document.getElementById("weddingMusic");
-    const musicButton = document.getElementById("musicButton");
+    <button class="control-button" id="musicButton">
+      ♫ Pause Music
+    </button>
 
-    openButton.addEventListener("click", async () => {
-      if (!scene.classList.contains("open")) {
-        scene.classList.add("open");
-        openButton.disabled = true;
-      }
+    <button class="control-button" id="calendarButton">
+      ♧ Add to Calendar
+    </button>
 
-      await playWeddingMusic();
-    });
+    <button class="end-call-action" id="endButton" aria-label="End call">
+      <span class="end-call-circle">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92Z" transform="rotate(135 12 12)"/>
+        </svg>
+      </span>
+      <span>End Call</span>
+    </button>
 
-    musicButton.addEventListener("click", async () => {
-      if (!weddingMusic.paused) {
-        weddingMusic.pause();
-      } else {
-        await playWeddingMusic();
-      }
-    });
+  </div>
+</section>
 
-    async function playWeddingMusic() {
-      try {
-        await weddingMusic.play();
-        updateMusicButton(true);
-      } catch (error) {
-        updateMusicButton(false);
-        musicButton.textContent = "♫ Retry Music";
-        console.error(
-          "Music could not play. Check the MP3 filename and upload location.",
-          error
-        );
-      }
-    }
+<!-- END CALL SCREEN -->
 
-    function updateMusicButton(playing) {
-      musicButton.textContent = playing
-        ? "♫ Music On"
-        : "♫ Play Music";
+<section id="endScreen" class="screen">
 
-      musicButton.setAttribute(
-        "aria-label",
-        playing ? "Pause music" : "Play music"
-      );
-    }
+  <div class="garden-background">
+    <svg class="garden-branch top-left" viewBox="0 0 180 240">
+      <use href="#garden-branch"/>
+    </svg>
+    <svg class="garden-branch bottom-right" viewBox="0 0 180 240">
+      <use href="#garden-branch"/>
+    </svg>
+  </div>
 
-    weddingMusic.addEventListener("play", () => {
-      updateMusicButton(true);
-    });
+  <div class="end-card">
 
-    weddingMusic.addEventListener("pause", () => {
-      updateMusicButton(false);
-    });
+    <div class="profile-emblem">ॐ</div>
 
-    weddingMusic.addEventListener("error", () => {
-      musicButton.textContent = "♫ Retry Music";
-      console.error(
-        "The audio file could not load. Verify its exact filename and location."
-      );
-    });
-  </script>
+    <h2 class="end-title">Until We Celebrate</h2>
+
+    <p class="end-message">
+      With love and warm wishes,<br>
+      Najendra &amp; Natalia
+    </p>
+
+    <button class="again-button" id="againButton">
+      Call Again
+    </button>
+
+  </div>
+</section>
+
+<script>
+const callScreen = document.getElementById("callScreen");
+const declinedScreen = document.getElementById("declinedScreen");
+const invitationScreen = document.getElementById("invitationScreen");
+const endScreen = document.getElementById("endScreen");
+
+const music = document.getElementById("weddingMusic");
+const musicButton = document.getElementById("musicButton");
+
+function showScreen(screen) {
+  document.querySelectorAll(".screen").forEach(item => {
+    item.classList.remove("active");
+  });
+
+  screen.classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+async function playMusic() {
+  try {
+    await music.play();
+    musicButton.textContent = "♫ Pause Music";
+  } catch (error) {
+    musicButton.textContent = "♫ Play Music";
+  }
+}
+
+function stopMusic() {
+  music.pause();
+  music.currentTime = 0;
+  musicButton.textContent = "♫ Play Music";
+}
+
+/* Answer incoming call */
+
+document.getElementById("answerButton").addEventListener("click", async () => {
+  showScreen(invitationScreen);
+  await playMusic();
+});
+
+/* Decline incoming call - show funny baraat message */
+
+document.getElementById("declineButton").addEventListener("click", () => {
+  stopMusic();
+  showScreen(declinedScreen);
+});
+
+/* Return to incoming call screen after funny message */
+
+document.getElementById("answerAgainButton").addEventListener("click", () => {
+  showScreen(callScreen);
+});
+
+/* End the invitation call */
+
+document.getElementById("endButton").addEventListener("click", () => {
+  stopMusic();
+  showScreen(endScreen);
+});
+
+/* Call again */
+
+document.getElementById("againButton").addEventListener("click", async () => {
+  showScreen(callScreen);
+  await playMusic();
+});
+
+/* Music controls */
+
+musicButton.addEventListener("click", async () => {
+  if (music.paused) {
+    await playMusic();
+  } else {
+    music.pause();
+    musicButton.textContent = "♫ Play Music";
+  }
+});
+
+/* Attempt music playback when the page loads */
+
+window.addEventListener("load", () => {
+  playMusic();
+});
+
+/* Browser audio interaction support */
+
+document.addEventListener("pointerdown", () => {
+  if (callScreen.classList.contains("active") && music.paused) {
+    playMusic();
+  }
+}, { once: true });
+
+/* Add wedding date to calendar */
+
+document.getElementById("calendarButton").addEventListener("click", () => {
+  const calendarContent = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Najendra and Natalia//Save the Date//EN",
+    "BEGIN:VEVENT",
+    "UID:najendra-natalia-wedding-20271121@example.com",
+    "DTSTAMP:20261031T000000Z",
+    "DTSTART;VALUE=DATE:20271121",
+    "DTEND;VALUE=DATE:20271122",
+    "SUMMARY:Najendra & Natalia's Wedding",
+    "LOCATION:Berbice, Guyana",
+    "DESCRIPTION:Wedding celebration of Najendra and Natalia.",
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+
+  const file = new Blob([calendarContent], {
+    type: "text/calendar;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(file);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "Najendra-and-Natalia-Wedding.ics";
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  URL.revokeObjectURL(url);
+});
+</script>
 
 </body>
 </html>
