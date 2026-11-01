@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -917,6 +916,9 @@ const endScreen = document.getElementById("endScreen");
 
 const music = document.getElementById("weddingMusic");
 const musicButton = document.getElementById("musicButton");
+
+/* Set background music volume to 25% */
+music.volume = 0.25;
 
 function showScreen(screen) {
   document.querySelectorAll(".screen").forEach(item => {
